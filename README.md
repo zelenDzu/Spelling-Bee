@@ -9,6 +9,9 @@ git clone https://github.com/zelenDzu/Spelling-Bee.git
 
 # Go into the repository
 cd spelling-bee
+
+# Type
+python main.py
 ```
 
-Then you can open "main.py" and enjoy the game!
+Hope you'll enjoy the game!
