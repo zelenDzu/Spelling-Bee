@@ -1,0 +1,19 @@
+1234567
+       Welcome to the Spelling Bee!
+Feel free to enter XXXXX if you want to give up!
+     All roads lead to the letter ? today!
+
+                 _______                                Found Words
+               /         \                   
+      _______ /     2     \ _______          
+    /         \           /         \        
+   /     7     \ _______ /     3     \       
+   \           /         \           /       
+    \ _______ /     1     \ _______ /        
+    /         \           /         \        
+   /     6     \ _______ /     4     \       
+   \           /         \           /       
+    \ _______ /     5     \ _______ /        
+              \           /                  
+               \ _______ /                   
+
