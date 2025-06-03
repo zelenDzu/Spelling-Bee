@@ -11,4 +11,4 @@ git clone https://github.com/zelenDzu/Spelling-Bee.git
 cd spelling-bee
 ```
 
-Then you can click on "main.py" and enjoy the game!
+Then you can open "main.py" and enjoy the game!
