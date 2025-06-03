@@ -88,7 +88,7 @@ def check_input(user_input, found_words, words, letters, main_letter):
 
 def dramatic_print(dramatic_message, dramatic_delay, dramatic_pause):
     for dramatic_c in dramatic_message:
-        print(dramatic_c, end='')
+        print(dramatic_c, end='',flush=True)
         sleep(dramatic_delay)
     sleep(dramatic_pause)
 
