@@ -86,7 +86,7 @@ def check_input(user_input, found_words, words, letters, main_letter):
     return code
 
 
-def dramatic_print(dramatic_message, dramatic_delay, dramatic_pause):
+def dramatic_print(dramatic_message, dramatic_delay = 0.1, dramatic_pause=0):
     for dramatic_c in dramatic_message:
         print(dramatic_c, end='',flush=True)
         sleep(dramatic_delay)
@@ -96,15 +96,15 @@ def dramatic_print(dramatic_message, dramatic_delay, dramatic_pause):
 def dramatic_end():
     sys("cls")
     sleep(3)
-    dramatic_print("You know", 0.1, 2)
-    dramatic_print("...", 0.3, 2)
+    dramatic_print("You know...", 0.1, 2)
     sys("cls")
-    dramatic_print("I tried to be patient. ", 0.1, 2)
+    dramatic_print("I tried to be patient", 0.1, 2)
+    dramatic_print(".",0.1, 1.5)
     sys("cls")
     dramatic_print("I gave you a chance", 0.1, 1)
     dramatic_print("... ", 0.3, 3)
     sys("cls")
-    dramatic_print("But you lost it.", 0.25, 3)
+    dramatic_print("But you LOST it.", 0.25, 3)
     sys("cls")
     sleep(1)
     dramatic_print("Goodbye.", 0, 1.5)
@@ -183,20 +183,22 @@ def main():
 
     sys("cls")
     guy = (mistakes >= 13) + (mistakes >= 7)
-    print(f"(Your total score is {score} points). ")
+    print(f"(Your total score is {score} points). \n")
+    if guy == 1 or guy == 2: print(bad_guy,end='')
+    else: print(nice_guy, end='')
 
     if len(found_words) == len(words):
-        if guy == 2: print(bad_guy + "You tried.")
-        if guy == 1: print(bad_guy + "Well, I've to admit you're better than I thought. Congratulations.")
-        if guy == 0: print(nice_guy + "You guessed all the words! That's an impossible result! What a genius! My congratulations!")
+        if guy == 2: dramatic_print("You tried.", 0.3, 0)
+        if guy == 1: dramatic_print("Well, I've to admit you're better than I thought. Congratulations.")
+        if guy == 0: dramatic_print("You guessed all the words! That's an impossible result! What a genius! My congratulations!")
     elif len(found_words) >= 1:
-        if guy == 2: print(bad_guy + "You tried.")
-        if guy == 1: print(bad_guy + f"You guessed {len(found_words)} from {len(words)} words. Not so bad.")
-        if guy == 0: print(nice_guy + f"You guessed {len(found_words)} from {len(words)} words! That's an awesome result! My congratulations!")
+        if guy == 2: dramatic_print("You tried.", 0.3, 0)
+        if guy == 1: dramatic_print(f"You guessed {len(found_words)} from {len(words)} words. Not so bad.")
+        if guy == 0: dramatic_print(f"You guessed {len(found_words)} from {len(words)} words! That's an awesome result! My congratulations!")
     else:
-        if guy == 2: print(bad_guy + "I didn't even doubt it.")
-        if guy == 1: print(bad_guy + "I think we both understand: you got what you deserved.")
-        if guy == 0: print(nice_guy + "I know you tried - don't be upset, you'll do it next time! I believe in you!")    
+        if guy == 2: dramatic_print("I didn't even doubt it.", 0.3, 0)
+        if guy == 1: dramatic_print("I think we both understand: you got what you deserved.")
+        if guy == 0: dramatic_print("I know you tried - don't be upset, you'll do it next time! I believe in you!")    
     
         
     sleep(5)
