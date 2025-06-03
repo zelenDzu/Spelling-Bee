@@ -169,12 +169,17 @@ def main(newgame = 0):
         user_input = input('Input word: ')
         code = check_input(user_input, found_words, words, letters, main_letter)
 
+        #EXIT OPTION
+        if user_input.lower() == 'xxxxx':
+            break
+
         #HELP OPTION
         if user_input.lower() == "help" and guy == 1 and help_flag:
             help_option()
             help_flag = 0
             continue
 
+        #CHECK WORD    
         if code != -1:
             mistakes += 1
         else:
