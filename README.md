@@ -11,5 +11,5 @@ git clone https://github.com/zelenDzu/Spelling-Bee.git
 cd spelling-bee
 
 # Compile the project
-init
+python main.py
 ```
