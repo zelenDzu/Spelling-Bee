@@ -14,6 +14,7 @@ sample = []
 #FOR COMMENTS
 nice_guy = "(≧◡≦)  " 
 bad_guy =  "(￢_￢;)  "
+guy = 0
 codes_dict_nice = {-1: "Sweetie, you've found a word! Your parents must be proud of you!",
 0: "Your input is empty.",
 1: "Sweetie, it'd be better if you used only Latin letters.",
@@ -125,12 +126,35 @@ def help_option():
     dramatic_print("Did it help?)", 0.1, 7)
     
 
-def main():
+def main(newgame = 0):
+    global guy
+    found_words = []
     user_input = ""
-    message = "I hope you know the rules! If not, read them somewhere! \n\t(Or do not - playing without knowing them will make it even more interesting).\n"
+    if newgame: 
+        message = "I hope you know the rules! If not, read them somewhere! \n\t(Or do not - playing without knowing them will make it even more interesting).\n"
+    else: 
+        message = ""
+        if guy == 2:
+            sleep(0.5)
+            dramatic_print("NO, I CAN'T TAKE THIS ANYMORE!", 0.1, 1)
+            dramatic_print(" I SUFFERED ENOUGH!", 0.1, 1)
+            sys("cls")
+            dramatic_print("Bye!", 0.1, 1)
+            return 1
+        if guy == 1: 
+            dramatic_print(f"       Welcome to the ...", 0.05 ,0.5)
+            print('\n' + bad_guy)
+            dramatic_print("Oh.",0.2, 1)
+            dramatic_print(" It's you again.", 0.2, 2)
+            dramatic_print("\nLets both pretend we see each other for the first time, okay?", 0.1, 3)
+            sys("cls")
+        else:
+            print(nice_guy)
+            dramatic_print("It's nice to see you again, sweetie!\n", 0.1, 2)
+            sys("cls")
+    
     mistakes = 0
     score = 0
-    guy = 0
     help_flag = 1
 
     while user_input.upper() != "XXXXX":
@@ -205,7 +229,11 @@ def main():
     sys("cls")
     return 0
 
+
+newgame = 1
 while True:
-    if main(): break 
+    sys("cls")
+    if main(newgame): break 
+    newgame = 0
     if input("Play again (yes/no)?\n").lower() in ('no','nope','n'): 
         break
