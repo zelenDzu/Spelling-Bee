@@ -1,5 +1,6 @@
 from os import system as sys
 from time import sleep
+from random import random as rand
 import re
 
 #VARIABLES
@@ -16,7 +17,7 @@ nice_guy = "(≧◡≦)  "
 bad_guy =  "(￢_￢;)  "
 guy = 0
 codes_dict_nice = {-1: "Sweetie, you've found a word! Your parents must be proud of you!",
-0: "Your input is empty.",
+0: "Your input is empty :(",
 1: "Sweetie, it'd be better if you used only Latin letters.",
 2: "Watch the honeycombs: they show which letters you can use!",
 3: "Sweetie, do not forget where all roads lead!",
@@ -24,7 +25,7 @@ codes_dict_nice = {-1: "Sweetie, you've found a word! Your parents must be proud
 5: "I wish it was real...",
 6: "It's a nice try, but I think you've already found it."}
 codes_dict_bad = {-1: "You've finally found it. Congratulations.",
-              0: "It's empty! Or it means you give up?))",
+              0: "It's empty! ",
               1: "Words aren't just random gibberish - they're built from letters!",
               2: "These pretty honeycombs aren't decoration. There are letters on them!",
               3: "Remind me: where do all roads lead?",
@@ -116,21 +117,38 @@ def help_option():
     global bad_guy
     sys("cls")
     print(bad_guy, end='')
-    dramatic_print("You want some help?\n", 0.1, 1)
+    dramatic_print("You really want some help?\n", 0.1, 1)
     dramatic_print("You had to say it earlier, sweetie!)\n", 0.1, 1)
     dramatic_print("Here, take this link to the tutorial video - it should help you: ", 0.1, 0.5)
     print("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
     sleep(15)
     sys("cls")
-    print("(￢‿￢ )")
-    dramatic_print("Did it help?)", 0.1, 7)
-    
+    bad_guy_makin_fun = "(￢‿￢ )  "
+    print(bad_guy_makin_fun, end='')
+    dramatic_print("Did it help?)", 0.1, 1)
+    ans = input('\n\tInput: ')
+    sys("cls")
+    if ans.lower() in ("yes","y","yep"): 
+        print(bad_guy_makin_fun, end = '')
+        dramatic_print("I knew it)", 0.1, 3)
+        return 0
+    else:
+        print(bad_guy, end='')
+        dramatic_print("So that's how you treat my support?!", 0.05, 0.5)
+        dramatic_print("\nNow I see: there's nothing to talk about.",0.05,2)
+        sys("cls")
+        print("Good luck.")
+        sleep(1)
+        return 1
+
 
 def main(newgame = 0):
     global guy
+    greeting = "       Welcome to the Spelling Bee!"+"\n             Enjoy the game!"
     found_words = []
     user_input = ""
     if newgame: 
+        dramatic_print(greeting, 0.05, 3)
         message = "I hope you know the rules! If not, read them somewhere! \n\t(Or do not - playing without knowing them will make it even more interesting).\n"
     else: 
         message = ""
@@ -170,9 +188,11 @@ def main(newgame = 0):
         code = check_input(user_input, found_words, words, letters, main_letter)
 
         #HELP OPTION
-        if user_input.lower() == "help" and guy == 1 and help_flag:
-            help_option()
+        if user_input.lower() in ("help","helpme","help me") and guy == 1 and help_flag:
+            if help_option():
+                return 1
             help_flag = 0
+            message = bad_guy + "I hope you got enough motivation to end this."
             continue
 
         if code != -1:
@@ -204,6 +224,9 @@ def main(newgame = 0):
         elif guy == 1: message = bad_guy + codes_dict_bad[code] + score_message
         else: message = nice_guy + codes_dict_nice[code] + score_message
 
+        if mistakes==12 and help_flag and not score_message and rand() <=0.42: 
+            message = bad_guy + "You can always ask me for help if you need it)"
+
 
     sys("cls")
     guy = (mistakes >= 13) + (mistakes >= 7)
@@ -212,15 +235,15 @@ def main(newgame = 0):
     else: print(nice_guy, end='')
 
     if len(found_words) == len(words):
-        if guy == 2: dramatic_print("You tried.", 0.3, 0)
+        if guy == 2: dramatic_print("You tried.", 0.2, 0)
         if guy == 1: dramatic_print("Well, I've to admit you're better than I thought. Congratulations.")
         if guy == 0: dramatic_print("You guessed all the words! That's an impossible result! What a genius! My congratulations!")
     elif len(found_words) >= 1:
-        if guy == 2: dramatic_print("You tried.", 0.3, 0)
+        if guy == 2: dramatic_print("You tried.", 0.2, 0)
         if guy == 1: dramatic_print(f"You guessed {len(found_words)} from {len(words)} words. Not so bad.")
         if guy == 0: dramatic_print(f"You guessed {len(found_words)} from {len(words)} words! That's an awesome result! My congratulations!")
     else:
-        if guy == 2: dramatic_print("I didn't even doubt it.", 0.3, 0)
+        if guy == 2: dramatic_print("You tried.", 0.2, 0)
         if guy == 1: dramatic_print("I think we both understand: you got what you deserved.")
         if guy == 0: dramatic_print("I know you tried - don't be upset, you'll do it next time! I believe in you!")    
     
