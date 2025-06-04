@@ -187,6 +187,10 @@ def main(newgame = 0):
         user_input = input('Input word: ')
         code = check_input(user_input, found_words, words, letters, main_letter)
 
+        #EXIT OPTION
+        if user_input.lower() == 'xxxxx':
+            break
+
         #HELP OPTION
         if user_input.lower() in ("help","helpme","help me") and guy == 1 and help_flag:
             if help_option():
@@ -195,6 +199,7 @@ def main(newgame = 0):
             message = bad_guy + "I hope you got enough motivation to end this."
             continue
 
+        #CHECK WORD    
         if code != -1:
             mistakes += 1
         else:

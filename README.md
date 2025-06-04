@@ -1,7 +1,7 @@
 # Spelling Bee
 This is repository for Spelling Bee source code.
 
-To clone and run this repository, you'll need Git installed on your computer. From your command line:
+To clone and run this repository, you'll need Git and Python installed on your computer. From your command line:
 
 ```bash
 # Clone this repository
@@ -9,6 +9,9 @@ git clone https://github.com/zelenDzu/Spelling-Bee.git
 
 # Go into the repository
 cd spelling-bee
+
+# Type
+python main.py
 ```
 
-Then you can open "main.py" and enjoy the game!
+Hope you'll enjoy the game!
